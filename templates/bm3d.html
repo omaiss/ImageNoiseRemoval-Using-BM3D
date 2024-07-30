@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Denoise Images</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/title.png') }}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+          content="A site that works to clarify distorted images and videos using artificial intelligence and algorithms">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bm3d.css')}}">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
+            rel="stylesheet"/>
+</head>
+<style>
+    .forms_contains{
+    margin: 0 auto;
+    width: 50%;
+    }
+</style>
+<body>
+<div class="animation-background">
+        <header class="header">
+        <div style="display:flex;">
+            <img src="{{url_for('static', filename='images/logos-removebg-preview.png')}}" height="50px"
+                 style="margin:0;">
+            <a href="#" class="logo">ReviveSat.</a>
+        </div>
+        <nav class="navbar">
+            <a href="index" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+            <a href=login>Log in</a>
+        </nav>
+    </header>
+    <section style="margin-bottom: 10%; top:150px; position:relative;">
+        <div class="forms_contains">
+            <div class="progress" id="mainprog">
+                <div id="progressDiv" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                     aria-valuenow="75"
+                     aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%
+                </div>
+            </div>
+            <br>
+            <div id="myDiv" class="form-container">
+                <img id="view-image" src="" style="margin: 10px; max-width: 600px; max-height: 400px;">
+                <p id="filename" style="color:black; margin:10px 0 10px 0; font-size:22px;"></p>
+                <form id="imageForm" enctype="multipart/form-data">
+                    <div class="btn-box">
+                        <label for="fileInput">Choose Image</label>
+                        <input type="file" id="fileInput" accept="image/*" onchange="downloadAndDisplayImage(event)">
+                        <a class="btn-box-custom" onclick="denoiseImage()">Denoise Image</a>
+                    </div>
+
+                </form>
+                <img id="result" style="margin:10px; width:90%"></img>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="cta-text">
+                                <h4>Find us</h4>
+                                <span>1010 Avenue, sw 54321, chandigarh</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-phone"></i>
+                            <div class="cta-text">
+                                <h4>Call us</h4>
+                                <span>07813833580</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="far fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Mail us</h4>
+                                <span>mail@info.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="{{url_for('static', filename = 'images/logo.png')}}"
+                                                          class="img-fluid" alt="logo"></a>
+                            </div>
+                            <div class="footer-text">
+                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor
+                                    incididuntut consec tetur adipisicing
+                                    elit,Lorem ipsum dolor sit amet.</p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Follow us</span>
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Useful Links</h3>
+                            </div>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">about</a></li>
+                                <li><a href="#">services</a></li>
+                                <li><a href="#">portfolio</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">Expert Team</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Latest News</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Subscribe</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2018, All Right Reserved <a
+                                    href="https://codepen.io/anupkumar92/">Anup</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+    // First, you need to select the header element.
+const header = document.querySelector('.header');
+// Then, you add an event listener to the window object for the scroll event.
+window.addEventListener('scroll', function () {
+    // Check if the page is scrolled more than 20 pixels
+    if (window.scrollY > 80) {
+        // If yes, add the 'sticky' class to the header
+        header.classList.add('sticky');
+    } else {
+        // If not, or if the user scrolls back up, remove the 'sticky' class
+        header.classList.remove('sticky');
+    }
+});
+
+</script>
+<script src="{{ url_for('static', filename='js/bm3d.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/title.png') }}"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Satellite Image Restoration</title>
+    <meta name="description"
+          content="A site that works to clarify distorted images and videos using artificial intelligence and algorithms"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}"/>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <!-- Bootstrap CSS (ensure you check for the latest version) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
+            rel="stylesheet"/>
+</head>
+
+<body>
+<div class="animation-background">
+    <header class="header">
+        <div style="display:flex;">
+            <img src="{{url_for('static', filename='images/logos-removebg-preview.png')}}" height="50px"
+                 style="margin:0;">
+            <a href="#" class="logo">ReviveSat.</a>
+        </div>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+            <a href=login>Log in</a>
+        </nav>
+    </header>
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Image Restoration</h1>
+            <h3>By BM3D algorithms</h3>
+            <p>Unleash the power of BM3D algorithms for satellite image restoration. Enhance image quality, remove
+                noise, and reveal hidden details. Fast and efficient solution. Transform your satellite imagery.</p>
+            <div class="btn-box">
+                <a href="#">Lock For This</a>
+                <a href="bm3d">Start Testing</a>
+            </div>
+        </div>
+        <main>
+            <div class="container">
+                <div class="image-container">
+                    <img
+                            class="image-before slider-image"
+                            src="{{ url_for('static', filename='images/Home.jpg') }}" alt="Before Restoration"
+                    />
+                    <img
+                            class="image-after slider-image"
+                            src="{{ url_for('static', filename='images/Home_final.jpg') }}" alt="After Restoration"
+                    />
+                </div>
+                <!-- step="10" -->
+                <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="50"
+                        aria-label="Percentage of before photo shown"
+                        class="slider"
+                />
+                <div class="slider-line" aria-hidden="true"></div>
+                <div class="slider-button" aria-hidden="true">
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="30"
+                            height="30"
+                            fill="currentColor"
+                            viewBox="0 0 256 256"
+                    >
+                        <rect width="256" height="256" fill="none"></rect>
+                        <line
+                                x1="128"
+                                y1="40"
+                                x2="128"
+                                y2="216"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="16"
+                        ></line>
+                        <line
+                                x1="96"
+                                y1="128"
+                                x2="16"
+                                y2="128"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="16"
+                        ></line>
+                        <polyline
+                                points="48 160 16 128 48 96"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="16"
+                        ></polyline>
+                        <line
+                                x1="160"
+                                y1="128"
+                                x2="240"
+                                y2="128"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="16"
+                        ></line>
+                        <polyline
+                                points="208 96 240 128 208 160"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="16"
+                        ></polyline>
+                    </svg>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <!-- About content here -->
+        <div class="container">
+            <h2>About Us</h2>
+            <p>ReviveSat specializes in satellite image restoration leveraging advanced BM3D algorithms and
+                artificial intelligence. Our mission is to enhance the clarity and detail of satellite imagery to
+                support various industries, including environmental monitoring, urban planning, and disaster
+                response.</p>
+            <p>Our team consists of experts in image processing, AI, and remote sensing, dedicated to delivering
+                high-quality solutions.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <!-- Services content here -->
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-item">
+                <h3>Image Enhancement</h3>
+                <p>Improve image resolution and clarity, bringing out hidden details in satellite imagery.</p>
+            </div>
+            <div class="service-item">
+                <h3>Noise Reduction</h3>
+                <p>Reduce noise and artifacts to produce cleaner, more accurate images.</p>
+            </div>
+            <div class="service-item">
+                <h3>Custom Solutions</h3>
+                <p>Tailored algorithms and processing techniques for specific types of imagery and requirements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio-section">
+        <!-- Portfolio content here -->
+        <div class="container">
+            <h2>Portfolio</h2>
+            <div class="portfolio-item">
+                <img src="{{ url_for('static', filename='images/Merged_Image.png') }}" alt="Before Restoration"/>
+                <h3>Before and after image restoration.</h3>
+            </div>
+            <!-- Add more portfolio items as needed -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form action="your-server-endpoint" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required/>
+                <input type="email" name="email" placeholder="Your Email" required/>
+                <input type="text" name="subject" placeholder="Subject" required/>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+    <!-- <footer class="footer">
+        <div class="row">
+            <div class="col">
+                <img src="Satellite Image Restoration.png">
+            </div>
+        </div> -->
+    <!-- Static Social Media Links -->
+    <!-- <div class="home-sci"> -->
+    <!-- Re-used your class for consistency -->
+    <!-- <a href="#"><i class="bx bxl-facebook"></i></a>
+    <a href="#"><i class="bx bxl-twitter"></i></a>
+    <a href="#"><i class="bx bxl-linkedin"></i></a>
+</div>
+</footer>
+<footer class="site-footer">
+<div class="container">
+    <div class="col">
+        <img src="Satellite Image Restoration.png">
+    </div>
+    <ul class="footer-social-links">
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">LinkedIn</a></li>
+    </ul>
+    <p>&copy; 2024 ReviveSat. All rights reserved.</p>
+</div>
+</footer> -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="cta-text">
+                                <h4>Find us</h4>
+                                <span>1010 Avenue, sw 54321, chandigarh</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-phone"></i>
+                            <div class="cta-text">
+                                <h4>Call us</h4>
+                                <span>07813833580</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="far fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Mail us</h4>
+                                <span>mail@info.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="{{url_for('static', filename = 'images/logo.png')}}"
+                                                          class="img-fluid" alt="logo"></a>
+                            </div>
+                            <div class="footer-text">
+                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor
+                                    incididuntut consec tetur adipisicing
+                                    elit,Lorem ipsum dolor sit amet.</p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Follow us</span>
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Useful Links</h3>
+                            </div>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">about</a></li>
+                                <li><a href="#">services</a></li>
+                                <li><a href="#">portfolio</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">Expert Team</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Latest News</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Subscribe</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2018, All Right Reserved <a
+                                    href="https://codepen.io/anupkumar92/">Anup</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+    // First, you need to select the header element.
+const header = document.querySelector('.header');
+// Then, you add an event listener to the window object for the scroll event.
+window.addEventListener('scroll', function () {
+    // Check if the page is scrolled more than 20 pixels
+    if (window.scrollY > 80) {
+        // If yes, add the 'sticky' class to the header
+        header.classList.add('sticky');
+    } else {
+        // If not, or if the user scrolls back up, remove the 'sticky' class
+        header.classList.remove('sticky');
+    }
+});
+</script>
+<script src="{{ url_for('static', filename='js/code.js') }}"></script>
+</body>
+
+</html>
